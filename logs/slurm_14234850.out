@@ -37,3 +37,17 @@ Starting Training...
 {'eval_loss': 1.4672966003417969, 'eval_spearman_rho': 0.2676665168409514, 'eval_mse': 1.4672966003417969, 'eval_runtime': 25.9833, 'eval_samples_per_second': 72.855, 'eval_steps_per_second': 18.243, 'epoch': 3.0}
 {'loss': 1.5024, 'grad_norm': 1.1441007852554321, 'learning_rate': 3.674762407602957e-06, 'epoch': 3.17}
 {'loss': 1.5557, 'grad_norm': 0.598666787147522, 'learning_rate': 2.6187961985216476e-06, 'epoch': 3.7}
+{'eval_loss': 1.4904650449752808, 'eval_spearman_rho': 0.3182943223580743, 'eval_mse': 1.4904650449752808, 'eval_runtime': 25.9352, 'eval_samples_per_second': 72.99, 'eval_steps_per_second': 18.276, 'epoch': 4.0}
+{'loss': 1.4637, 'grad_norm': 9.399731636047363, 'learning_rate': 1.562829989440338e-06, 'epoch': 4.22}
+{'loss': 1.4968, 'grad_norm': 10.376646041870117, 'learning_rate': 5.068637803590285e-07, 'epoch': 4.75}
+{'eval_loss': 1.3618674278259277, 'eval_spearman_rho': 0.3221363366750928, 'eval_mse': 1.3618674278259277, 'eval_runtime': 25.9253, 'eval_samples_per_second': 73.018, 'eval_steps_per_second': 18.283, 'epoch': 5.0}
+{'train_runtime': 1865.4992, 'train_samples_per_second': 20.287, 'train_steps_per_second': 2.538, 'train_loss': 1.5295769213119554, 'epoch': 5.0}
+Evaluating on Test Set...
+
+--- FINAL BASELINE RESULTS ---
+Model: facebook/esm2_t33_650M_UR50D
+Spearman Rho: 0.3221
+MSE Loss: 1.3619
+Max GPU memory allocated during training: 15.84 GB
+Training time: 31m 5s
+------------------------------

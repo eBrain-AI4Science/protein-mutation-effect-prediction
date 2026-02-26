@@ -1,0 +1,2 @@
+Job ID,Experiment Name,Model,Dataset,Training Set Size,Test Set Size,Method,GPU,Learning Rate,Batch Size,Num Epochs,Lora Rank,Training Time,Spearman Rho,MSE Loss,Max GPU Memory
+14234850,Baseline_Doud_Full,ESM-2 650M,Doud_NCAP,7569,1893,Full-Fine Tuning,NVIDIA A100-PCIE-40GB (39 GB),1.00E-05,4,5,NA,31m 5s,0.3221,1.3619,15.84
