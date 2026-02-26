@@ -7,14 +7,14 @@ from datasets import Dataset
 # --- CONFIGURATION ---
 # We use the TAPE Fluorescence (GFP) dataset hosted on GitHub
 # DATA_URL = "https://raw.githubusercontent.com/songlab-cal/tape/master/data/fluorescence/fluorescence_train.json"
-DATA_PATH = "RNC_ECOLI_Weeks_2023.csv"
+DATA_PATH = "datasets/Doud_NCAP_I34A1_2015.csv"
 # MODEL_CHECKPOINT = "facebook/esm2_t36_3B_UR50D" 
 MODEL_CHECKPOINT = "esm2_t33_650M_UR50D"
 BATCH_SIZE = 4   # 650M is large; keep batch size small to prevent crashing
 LR = 1e-5        # Standard fine-tuning learning rate
 EPOCHS = 5
 
-print(f"--- STARTING BASELINE: {MODEL_CHECKPOINT} on RNC_ECOLI  ---")
+print(f"--- STARTING BASELINE: {MODEL_CHECKPOINT}  ---")
 
 # 1. Load Data Directly from file
 print(f"Loading data from {DATA_PATH}...")
@@ -78,7 +78,7 @@ def compute_metrics(eval_pred):
 
 # 5. Training Arguments
 training_args = TrainingArguments(
-    output_dir="./baseline_results_full",
+    output_dir="./results/baseline_results_full",
     eval_strategy="epoch",
     save_strategy="epoch",
     learning_rate=LR,

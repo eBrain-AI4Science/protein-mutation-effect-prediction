@@ -6,7 +6,7 @@ from datasets import Dataset
 from peft import LoraConfig, get_peft_model, TaskType # <--- NEW IMPORT
 
 # --- CONFIGURATION ---
-DATA_PATH = "RNC_ECOLI_Weeks_2023.csv"
+DATA_PATH = "datasets/RNC_ECOLI_Weeks_2023.csv"
 MODEL_CHECKPOINT = "facebook/esm2_t33_650M_UR50D"
 
 # OPTIMIZATION 1: Push Batch Size. LoRA saves memory, so let's use it.
@@ -19,7 +19,7 @@ LR = 1e-3
 # OPTIMIZATION 3: More Epochs. LoRA takes longer to converge.
 EPOCHS = 5      
 
-print(f"--- STARTING LoRA EXPERIMENT: {MODEL_CHECKPOINT} on RNC_ECOLI ---")
+print(f"--- STARTING LoRA EXPERIMENT: {MODEL_CHECKPOINT} ---")
 
 # 1. Load Data
 print(f"Loading data from {DATA_PATH}...")
@@ -78,7 +78,7 @@ def compute_metrics(eval_pred):
 
 # 5. Training Arguments
 training_args = TrainingArguments(
-    output_dir="./lora_results_rnc_optimized",
+    output_dir="./results/lora_results_rnc_optimized",
     eval_strategy="epoch",
     save_strategy="epoch",
     learning_rate=LR,

@@ -6,13 +6,13 @@ from datasets import Dataset
 from peft import LoraConfig, get_peft_model, TaskType # <--- NEW IMPORT
 
 # --- CONFIGURATION ---
-DATA_PATH = "RNC_ECOLI_Weeks_2023.csv"
+DATA_PATH = "datasets/RNC_ECOLI_Weeks_2023.csv"
 MODEL_CHECKPOINT = "facebook/esm2_t33_650M_UR50D"
 BATCH_SIZE = 8  # changed from 4. This will stabilize training and be much faster
 LR = 1e-4        # <--- CHANGED: LoRA usually needs a higher LR (1e-4 or 1e-3), changed from 1e-4. This helps it learn faster
 EPOCHS = 10      # changed from 3 or 5 
 
-print(f"--- STARTING LoRA EXPERIMENT: {MODEL_CHECKPOINT} on RNC_ECOLI ---")
+print(f"--- STARTING LoRA EXPERIMENT: {MODEL_CHECKPOINT} ---")
 
 # 1. Load Data
 print(f"Loading data from {DATA_PATH}...")
@@ -70,7 +70,7 @@ def compute_metrics(eval_pred):
 
 # 5. Training Arguments
 training_args = TrainingArguments(
-    output_dir="./lora_results_rnc",  # <--- CHANGED FOLDER NAME
+    output_dir="./results/lora_results_rnc",  # <--- CHANGED FOLDER NAME
     eval_strategy="epoch",
     save_strategy="epoch",
     learning_rate=LR,

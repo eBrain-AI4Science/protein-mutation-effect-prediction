@@ -12,7 +12,7 @@ from datasets import Dataset
 from peft import LoraConfig, get_peft_model, TaskType
 
 # --- CONFIGURATION ---
-DATA_PATH = "RNC_ECOLI_Weeks_2023.csv"
+DATA_PATH = "datasets/RNC_ECOLI_Weeks_2023.csv"
 # MODEL_CHECKPOINT = "facebook/esm2_t36_3B_UR50D"
 MODEL_CHECKPOINT = "esm2_t33_650M_UR50D"
 
@@ -91,7 +91,7 @@ def compute_metrics(eval_pred):
 
 # 6. Training Arguments
 training_args = TrainingArguments(
-    output_dir="./baseline_results_lora",
+    output_dir="./results/baseline_results_lora",
     eval_strategy="epoch",
     save_strategy="epoch",
     learning_rate=LR,

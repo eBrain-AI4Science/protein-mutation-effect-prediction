@@ -63,5 +63,5 @@ echo "--- Running Baseline Experiment ---"
 python baseline_full.py
 
 # 5. Run Experiment 2: Lora
-echo "--- Running LoRA Experiment ---"
+# echo "--- Running LoRA Experiment ---"
 # python baseline_lora4.py
