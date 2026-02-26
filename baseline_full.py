@@ -15,7 +15,7 @@ DATA_PATH = "datasets/Doud_NCAP_I34A1_2015.csv"
 MODEL_CHECKPOINT = "facebook/esm2_t33_650M_UR50D"
 BATCH_SIZE = 4   # 650M is large; keep batch size small to prevent crashing
 LR = 1e-5        # Standard fine-tuning learning rate
-EPOCHS = 5
+EPOCHS = 3
 
 # --- EXPERIMENT METADATA ---
 EXPERIMENT_NAME = "Baseline_Doud_Full"
