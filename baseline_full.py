@@ -5,8 +5,6 @@ from transformers import AutoModelForSequenceClassification, AutoTokenizer, Trai
 from datasets import Dataset
 
 # --- CONFIGURATION ---
-# We use the TAPE Fluorescence (GFP) dataset hosted on GitHub
-# DATA_URL = "https://raw.githubusercontent.com/songlab-cal/tape/master/data/fluorescence/fluorescence_train.json"
 DATA_PATH = "datasets/Doud_NCAP_I34A1_2015.csv"
 # MODEL_CHECKPOINT = "facebook/esm2_t36_3B_UR50D" 
 MODEL_CHECKPOINT = "esm2_t33_650M_UR50D"
