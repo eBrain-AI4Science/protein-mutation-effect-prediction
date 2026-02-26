@@ -1,0 +1,33 @@
+Job running on node: cn007
+Job partition: nvidia
+Thu Feb 26 11:52:49 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 580.105.08             Driver Version: 580.105.08     CUDA Version: 13.0     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-PCIE-40GB          Off |   00000000:25:00.0 Off |                    0 |
+| N/A   29C    P0             38W /  250W |       0MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+--- Running Baseline Experiment ---
+--- STARTING BASELINE: facebook/esm2_t33_650M_UR50D  ---
+Loading data from datasets/Doud_NCAP_I34A1_2015.csv...
+Data loaded Successfully.
+Training on 7569 sequences.
+Testing on 1893 seuqences.
+Starting Training...
+{'loss': 1.7001, 'grad_norm': 9.564619064331055, 'learning_rate': 8.950369588173179e-06, 'epoch': 0.53}
+{'eval_loss': 1.4877632856369019, 'eval_spearman_rho': 0.24723852819722167, 'eval_mse': 1.4877632856369019, 'eval_runtime': 26.0954, 'eval_samples_per_second': 72.542, 'eval_steps_per_second': 18.164, 'epoch': 1.0}
+{'loss': 1.4779, 'grad_norm': 12.913285255432129, 'learning_rate': 7.894403379091869e-06, 'epoch': 1.06}
+{'loss': 1.5596, 'grad_norm': 9.29422664642334, 'learning_rate': 6.83843717001056e-06, 'epoch': 1.58}

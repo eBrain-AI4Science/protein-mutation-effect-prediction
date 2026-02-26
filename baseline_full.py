@@ -1,3 +1,8 @@
+import os
+import time
+import csv
+from typing import Optional
+
 import pandas as pd
 import torch
 from scipy.stats import spearmanr
@@ -6,11 +11,102 @@ from datasets import Dataset
 
 # --- CONFIGURATION ---
 DATA_PATH = "datasets/Doud_NCAP_I34A1_2015.csv"
-# MODEL_CHECKPOINT = "facebook/esm2_t36_3B_UR50D" 
-MODEL_CHECKPOINT = "esm2_t33_650M_UR50D"
+# MODEL_CHECKPOINT = "facebook/esm2_t36_3B_UR50D"
+MODEL_CHECKPOINT = "facebook/esm2_t33_650M_UR50D"
 BATCH_SIZE = 4   # 650M is large; keep batch size small to prevent crashing
 LR = 1e-5        # Standard fine-tuning learning rate
 EPOCHS = 5
+
+# --- EXPERIMENT METADATA ---
+EXPERIMENT_NAME = "Baseline_Doud_Full"
+MODEL_NAME = "ESM-2 650M"
+DATASET_NAME = "Doud_NCAP"
+METHOD = "Full-Fine Tuning"
+RESULTS_CSV = "Protein LLM Mutation Effects Results.csv"
+
+
+def get_gpu_description() -> str:
+    if torch.cuda.is_available():
+        device_name = torch.cuda.get_device_name(0)
+        props = torch.cuda.get_device_properties(0)
+        total_gb = props.total_memory / (1024 ** 3)
+        return f"{device_name} ({total_gb:.0f} GB)"
+    return "CPU"
+
+
+def format_duration(seconds: float) -> str:
+    minutes = int(seconds // 60)
+    remaining_seconds = int(seconds % 60)
+    return f"{minutes}m {remaining_seconds}s"
+
+
+def append_results_row(
+    job_id: str,
+    experiment_name: str,
+    model_name: str,
+    dataset_name: str,
+    train_size: int,
+    test_size: int,
+    method: str,
+    gpu_desc: str,
+    learning_rate: float,
+    batch_size: int,
+    num_epochs: int,
+    lora_rank: str,
+    training_time_str: str,
+    spearman_rho: float,
+    mse_loss: float,
+    max_gpu_mem_gb: Optional[float],
+) -> None:
+    file_exists = os.path.isfile(RESULTS_CSV)
+    with open(RESULTS_CSV, mode="a", newline="") as f:
+        writer = csv.writer(f)
+        if not file_exists:
+            writer.writerow(
+                [
+                    "Job ID",
+                    "Experiment Name",
+                    "Model",
+                    "Dataset",
+                    "Training Set Size",
+                    "Test Set Size",
+                    "Method",
+                    "GPU",
+                    "Learning Rate",
+                    "Batch Size",
+                    "Num Epochs",
+                    "Lora Rank",
+                    "Training Time",
+                    "Spearman Rho",
+                    "MSE Loss",
+                    "Max GPU Memory",
+                ]
+            )
+
+        lr_str = f"{learning_rate:.2E}"
+        max_gpu_str = f"{max_gpu_mem_gb:.2f}" if max_gpu_mem_gb is not None else "NA"
+
+        writer.writerow(
+            [
+                job_id,
+                experiment_name,
+                model_name,
+                dataset_name,
+                train_size,
+                test_size,
+                method,
+                gpu_desc,
+                lr_str,
+                batch_size,
+                num_epochs,
+                lora_rank,
+                training_time_str,
+                f"{spearman_rho:.4f}",
+                f"{mse_loss:.4f}",
+                max_gpu_str,
+            ]
+        )
+
 
 print(f"--- STARTING BASELINE: {MODEL_CHECKPOINT}  ---")
 
@@ -18,10 +114,6 @@ print(f"--- STARTING BASELINE: {MODEL_CHECKPOINT}  ---")
 print(f"Loading data from {DATA_PATH}...")
 df = pd.read_csv(DATA_PATH)
 
-# The dataset columns are 'primary' (sequence) and 'log_fluorescence' (label)
-# We limit to 5000 samples for the baseline to save time (The full set is ~50k)
-# Remove the .head(5000) if you want to run the full experiment (takes longer)
-# df = df[['primary', 'log_fluorescence']].rename(columns={'primary': 'sequence', 'log_fluorescence': 'label'}).head(5000)
 
 # 1. Select only the columns we need
 # We map 'mutated_sequence' -> 'sequence' (Input)
@@ -41,9 +133,11 @@ dataset = Dataset.from_pandas(df)
 
 # 4. Split: 80% Train, 20% Test (Validation)
 dataset = dataset.train_test_split(test_size=0.2, seed=42)
+train_size = len(dataset["train"])
+test_size = len(dataset["test"])
 print(f"Data loaded Successfully.")
-print(f"Training on {len(dataset['train'])} sequences.")
-print(f"Testing on {len(dataset['test'])} seuqences.")
+print(f"Training on {train_size} sequences.")
+print(f"Testing on {test_size} seuqences.")
 
 
 # 2. Tokenization
@@ -103,11 +197,15 @@ trainer = Trainer(
 # 7. Run Training
 print("Starting Training...")
 
-max_gpu_mem_gb = None
+max_gpu_mem_gb: Optional[float] = None
 if torch.cuda.is_available():
     torch.cuda.reset_peak_memory_stats()
 
+gpu_desc = get_gpu_description()
+start_time = time.time()
 trainer.train()
+training_time = time.time() - start_time
+training_time_str = format_duration(training_time)
 
 if torch.cuda.is_available():
     max_gpu_mem_gb = torch.cuda.max_memory_allocated() / (1024 ** 3)
@@ -116,12 +214,37 @@ if torch.cuda.is_available():
 print("Evaluating on Test Set...")
 metrics = trainer.evaluate()
 
+spearman_val = float(metrics["eval_spearman_rho"])
+mse_val = float(metrics["eval_mse"])
+
 print("\n--- FINAL BASELINE RESULTS ---")
 print(f"Model: {MODEL_CHECKPOINT}")
-print(f"Spearman Rho: {metrics['eval_spearman_rho']:.4f}")
-print(f"MSE Loss: {metrics['eval_mse']:.4f}")
+print(f"Spearman Rho: {spearman_val:.4f}")
+print(f"MSE Loss: {mse_val:.4f}")
 if max_gpu_mem_gb is not None:
     print(f"Max GPU memory allocated during training: {max_gpu_mem_gb:.2f} GB")
 else:
     print("Max GPU memory allocated during training: N/A (no CUDA)")
+print(f"Training time: {training_time_str}")
 print("------------------------------")
+
+# 9. Append results to CSV
+job_id = os.environ.get("SLURM_JOB_ID", "NA")
+append_results_row(
+    job_id=job_id,
+    experiment_name=EXPERIMENT_NAME,
+    model_name=MODEL_NAME,
+    dataset_name=DATASET_NAME,
+    train_size=train_size,
+    test_size=test_size,
+    method=METHOD,
+    gpu_desc=gpu_desc,
+    learning_rate=LR,
+    batch_size=BATCH_SIZE,
+    num_epochs=EPOCHS,
+    lora_rank="NA",
+    training_time_str=training_time_str,
+    spearman_rho=spearman_val,
+    mse_loss=mse_val,
+    max_gpu_mem_gb=max_gpu_mem_gb,
+)

@@ -1,0 +1,9 @@
+Loading module 'cuda/11.8.0'
+Loading module 'gcc/9.2.0'
+
+Loading [1mcuda/11.8.0[22m
+  [94mLoading requirement[0m: gcc/9.2.0
+Traceback (most recent call last):
+  File "/scratch/ss17886/baseline/baseline_full.py", line 58, in <module>
+    max_gpu_mem_gb: float | None,
+TypeError: unsupported operand type(s) for |: 'type' and 'NoneType'
