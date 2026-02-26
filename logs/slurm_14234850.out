@@ -31,3 +31,9 @@ Starting Training...
 {'eval_loss': 1.4877632856369019, 'eval_spearman_rho': 0.24723852819722167, 'eval_mse': 1.4877632856369019, 'eval_runtime': 26.0954, 'eval_samples_per_second': 72.542, 'eval_steps_per_second': 18.164, 'epoch': 1.0}
 {'loss': 1.4779, 'grad_norm': 12.913285255432129, 'learning_rate': 7.894403379091869e-06, 'epoch': 1.06}
 {'loss': 1.5596, 'grad_norm': 9.29422664642334, 'learning_rate': 6.83843717001056e-06, 'epoch': 1.58}
+{'eval_loss': 1.4681999683380127, 'eval_spearman_rho': 0.22427027628092575, 'eval_mse': 1.4681999683380127, 'eval_runtime': 25.954, 'eval_samples_per_second': 72.937, 'eval_steps_per_second': 18.263, 'epoch': 2.0}
+{'loss': 1.5015, 'grad_norm': 2.722125768661499, 'learning_rate': 5.782470960929251e-06, 'epoch': 2.11}
+{'loss': 1.5633, 'grad_norm': 4.483610153198242, 'learning_rate': 4.730728616684266e-06, 'epoch': 2.64}
+{'eval_loss': 1.4672966003417969, 'eval_spearman_rho': 0.2676665168409514, 'eval_mse': 1.4672966003417969, 'eval_runtime': 25.9833, 'eval_samples_per_second': 72.855, 'eval_steps_per_second': 18.243, 'epoch': 3.0}
+{'loss': 1.5024, 'grad_norm': 1.1441007852554321, 'learning_rate': 3.674762407602957e-06, 'epoch': 3.17}
+{'loss': 1.5557, 'grad_norm': 0.598666787147522, 'learning_rate': 2.6187961985216476e-06, 'epoch': 3.7}
