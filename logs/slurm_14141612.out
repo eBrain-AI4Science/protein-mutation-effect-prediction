@@ -1,0 +1,46 @@
+Job running on node: cn008
+Job partition: nvidia
+Wed Feb 18 11:53:46 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 580.105.08             Driver Version: 580.105.08     CUDA Version: 13.0     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-PCIE-40GB          Off |   00000000:81:00.0 Off |                    0 |
+| N/A   29C    P0             38W /  250W |       0MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+--- Running Baseline Experiment ---
+--- STARTING BASELINE: facebook/esm2_t33_650M_UR50D on RNC_ECOLI  ---
+Loading data from RNC_ECOLI_Weeks_2023.csv...
+Data loaded Successfully.
+Training on 3421 sequences.
+Testing on 856 seuqences.
+Starting Training...
+{'eval_loss': 0.36080247163772583, 'eval_spearman_rho': 0.4137809937733156, 'eval_mse': 0.36080247163772583, 'eval_runtime': 11.8052, 'eval_samples_per_second': 72.511, 'eval_steps_per_second': 18.128, 'epoch': 1.0}
+{'loss': 0.4073, 'grad_norm': 1.8928300142288208, 'learning_rate': 7.682242990654206e-06, 'epoch': 1.17}
+{'eval_loss': 0.28820517659187317, 'eval_spearman_rho': 0.4597086711296956, 'eval_mse': 0.2882051467895508, 'eval_runtime': 11.8443, 'eval_samples_per_second': 72.271, 'eval_steps_per_second': 18.068, 'epoch': 2.0}
+{'loss': 0.333, 'grad_norm': 7.54444694519043, 'learning_rate': 5.345794392523364e-06, 'epoch': 2.34}
+{'eval_loss': 0.2281842827796936, 'eval_spearman_rho': 0.49623507148315615, 'eval_mse': 0.2281842678785324, 'eval_runtime': 11.8171, 'eval_samples_per_second': 72.438, 'eval_steps_per_second': 18.109, 'epoch': 3.0}
+{'loss': 0.2677, 'grad_norm': 10.720331192016602, 'learning_rate': 3.0093457943925236e-06, 'epoch': 3.5}
+{'eval_loss': 0.2226530760526657, 'eval_spearman_rho': 0.5110541219280872, 'eval_mse': 0.2226531058549881, 'eval_runtime': 11.8451, 'eval_samples_per_second': 72.266, 'eval_steps_per_second': 18.067, 'epoch': 4.0}
+{'loss': 0.2063, 'grad_norm': 3.510382652282715, 'learning_rate': 6.728971962616823e-07, 'epoch': 4.67}
+{'eval_loss': 0.2088729441165924, 'eval_spearman_rho': 0.5205940254590087, 'eval_mse': 0.2088729590177536, 'eval_runtime': 11.8217, 'eval_samples_per_second': 72.409, 'eval_steps_per_second': 18.102, 'epoch': 5.0}
+{'train_runtime': 874.5693, 'train_samples_per_second': 19.558, 'train_steps_per_second': 2.447, 'train_loss': 0.29596223296406116, 'epoch': 5.0}
+Evaluating on Test Set...
+
+--- FINAL BASELINE RESULTS ---
+Model: facebook/esm2_t33_650M_UR50D
+Spearman Rho: 0.5206
+MSE Loss: 0.2089
+------------------------------

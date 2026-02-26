@@ -1,0 +1,31 @@
+Loading module 'cuda/11.8.0'
+Loading module 'gcc/9.2.0'
+
+Loading [1mcuda/11.8.0[22m
+  [94mLoading requirement[0m: gcc/9.2.0
+python: can't open file '/scratch/ss17886/baseline/baseline_lora.py#!/bin/bash': [Errno 2] No such file or directory
+Unloading module 'cuda/11.8.0'
+Unloading module 'gcc/9.2.0'
+Loading module 'cuda/11.8.0'
+Loading module 'gcc/9.2.0'
+
+Loading [1mcuda/11.8.0[22m
+  [94mLoading requirement[0m: gcc/9.2.0
+Map:   0%|          | 0/3421 [00:00<?, ? examples/s]Map:  29%|██▉       | 1000/3421 [00:01<00:03, 765.27 examples/s]Map:  58%|█████▊    | 2000/3421 [00:02<00:01, 764.11 examples/s]Map:  88%|████████▊ | 3000/3421 [00:03<00:00, 764.98 examples/s]Map: 100%|██████████| 3421/3421 [00:04<00:00, 763.92 examples/s]Map: 100%|██████████| 3421/3421 [00:04<00:00, 763.71 examples/s]
+Map:   0%|          | 0/856 [00:00<?, ? examples/s]Map: 100%|██████████| 856/856 [00:01<00:00, 774.39 examples/s]Map: 100%|██████████| 856/856 [00:01<00:00, 771.18 examples/s]
+Some weights of EsmForSequenceClassification were not initialized from the model checkpoint at facebook/esm2_t33_650M_UR50D and are newly initialized: ['classifier.dense.bias', 'classifier.dense.weight', 'classifier.out_proj.bias', 'classifier.out_proj.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+Traceback (most recent call last):
+  File "/scratch/ss17886/baseline/baseline_lora4.py", line 74, in <module>
+    model = get_peft_model(model, lora_config)
+  File "/home/ss17886/.conda/envs/esm_repro/lib/python3.9/site-packages/peft/mapping_func.py", line 125, in get_peft_model
+    return MODEL_TYPE_TO_PEFT_MODEL_MAPPING[peft_config.task_type](
+  File "/home/ss17886/.conda/envs/esm_repro/lib/python3.9/site-packages/peft/peft_model.py", line 1591, in __init__
+    super().__init__(model, peft_config, adapter_name, **kwargs)
+  File "/home/ss17886/.conda/envs/esm_repro/lib/python3.9/site-packages/peft/peft_model.py", line 130, in __init__
+    self.base_model = cls(model, {adapter_name: peft_config}, adapter_name)
+  File "/home/ss17886/.conda/envs/esm_repro/lib/python3.9/site-packages/peft/tuners/tuners_utils.py", line 209, in __init__
+    self.inject_adapter(self.model, adapter_name, low_cpu_mem_usage=low_cpu_mem_usage, state_dict=state_dict)
+  File "/home/ss17886/.conda/envs/esm_repro/lib/python3.9/site-packages/peft/tuners/tuners_utils.py", line 667, in inject_adapter
+    raise ValueError(error_msg)
+ValueError: No modules were targeted for adaptation. This might be caused by a combination of mismatched target modules and excluded modules. Please check your `target_modules` and `exclude_modules` configuration. You may also have only targeted modules that are marked to be saved (`modules_to_save`).

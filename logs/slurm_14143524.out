@@ -1,0 +1,77 @@
+Job running on node: cn268
+Job partition: nvidia
+Wed Feb 18 15:08:37 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 580.105.08             Driver Version: 580.105.08     CUDA Version: 13.0     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-SXM4-80GB          Off |   00000000:81:00.0 Off |                    0 |
+| N/A   28C    P0             61W /  500W |       0MiB /  81920MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+--- Running LoRA Experiment ---
+Job running on node: cn268
+Job partition: nvidia
+Wed Feb 18 15:08:38 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 580.105.08             Driver Version: 580.105.08     CUDA Version: 13.0     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-SXM4-80GB          Off |   00000000:81:00.0 Off |                    0 |
+| N/A   29C    P0             98W /  500W |       0MiB /  81920MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+--- Running LoRA Experiment ---
+--- STARTING LoRA EXPERIMENT: facebook/esm2_t33_650M_UR50D on RNC_ECOLI ---
+Loading data from RNC_ECOLI_Weeks_2023.csv...
+Data loaded Successfully.
+Training on 3421 sequences.
+
+--- LoRA TRAINABLE PARAMETERS ---
+trainable params: 2,992,641 || all params: 654,034,583 || trainable%: 0.4576
+---------------------------------
+
+Starting LoRA Training...
+{'loss': 0.4651, 'grad_norm': 0.9995869994163513, 'learning_rate': 0.0008841121495327104, 'epoch': 0.58}
+{'eval_loss': 0.37058699131011963, 'eval_spearman_rho': 0.10313466672776926, 'eval_mse': 0.37058699131011963, 'eval_runtime': 11.324, 'eval_samples_per_second': 75.592, 'eval_steps_per_second': 18.898, 'epoch': 1.0}
+{'loss': 0.4341, 'grad_norm': 2.852196216583252, 'learning_rate': 0.0007672897196261682, 'epoch': 1.17}
+{'loss': 0.408, 'grad_norm': 1.0036531686782837, 'learning_rate': 0.0006504672897196262, 'epoch': 1.75}
+{'eval_loss': 0.3705260753631592, 'eval_spearman_rho': 0.31167372727092135, 'eval_mse': 0.3705260753631592, 'eval_runtime': 11.2764, 'eval_samples_per_second': 75.911, 'eval_steps_per_second': 18.978, 'epoch': 2.0}
+{'loss': 0.397, 'grad_norm': 1.41994047164917, 'learning_rate': 0.0005336448598130841, 'epoch': 2.34}
+{'loss': 0.3884, 'grad_norm': 1.975716471672058, 'learning_rate': 0.0004168224299065421, 'epoch': 2.92}
+{'eval_loss': 0.37111014127731323, 'eval_spearman_rho': 0.2442392802709473, 'eval_mse': 0.37111014127731323, 'eval_runtime': 11.2099, 'eval_samples_per_second': 76.361, 'eval_steps_per_second': 19.09, 'epoch': 3.0}
+{'loss': 0.4283, 'grad_norm': 1.1867669820785522, 'learning_rate': 0.0003, 'epoch': 3.5}
+{'eval_loss': 0.2556220293045044, 'eval_spearman_rho': 0.4553723239677759, 'eval_mse': 0.255621999502182, 'eval_runtime': 11.2139, 'eval_samples_per_second': 76.334, 'eval_steps_per_second': 19.083, 'epoch': 4.0}
+{'loss': 0.3091, 'grad_norm': 0.529433012008667, 'learning_rate': 0.00018341121495327103, 'epoch': 4.09}
+{'loss': 0.1853, 'grad_norm': 3.0563695430755615, 'learning_rate': 6.682242990654205e-05, 'epoch': 4.67}
+{'eval_loss': 0.16524530947208405, 'eval_spearman_rho': 0.5849327611538184, 'eval_mse': 0.16524530947208405, 'eval_runtime': 11.2059, 'eval_samples_per_second': 76.388, 'eval_steps_per_second': 19.097, 'epoch': 5.0}
+{'train_runtime': 616.486, 'train_samples_per_second': 27.746, 'train_steps_per_second': 6.943, 'train_loss': 0.3629978117541732, 'epoch': 5.0}
+Evaluating on Test Set...
+
+--- FINAL LoRA RESULTS ---
+Model: facebook/esm2_t33_650M_UR50D
+Spearman Rho: 0.5849
+MSE Loss: 0.1652
+------------------------------

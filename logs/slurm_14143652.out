@@ -1,0 +1,73 @@
+Job running on node: cn268
+Job partition: nvidia
+Wed Feb 18 15:24:41 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 580.105.08             Driver Version: 580.105.08     CUDA Version: 13.0     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-SXM4-80GB          Off |   00000000:81:00.0 Off |                    0 |
+| N/A   29C    P0             62W /  500W |       0MiB /  81920MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+--- Running LoRA Experiment ---
+Job running on node: cn268
+Job partition: nvidia
+Wed Feb 18 15:24:42 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 580.105.08             Driver Version: 580.105.08     CUDA Version: 13.0     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-SXM4-80GB          Off |   00000000:81:00.0 Off |                    0 |
+| N/A   30C    P0             88W /  500W |       0MiB /  81920MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+--- Running LoRA Experiment ---
+--- STARTING OPTIMIZED LoRA EXPERIMENT: facebook/esm2_t33_650M_UR50D ---
+Loading data from RNC_ECOLI_Weeks_2023.csv...
+
+--- LoRA TRAINABLE PARAMETERS (Optimized) ---
+trainable params: 2,992,641 || all params: 654,034,583 || trainable%: 0.4576
+---------------------------------------------
+
+Starting Optimized LoRA Training...
+{'eval_loss': 0.364235520362854, 'eval_spearman_rho': 0.3684783112331294, 'eval_mse': 0.3642355799674988, 'eval_runtime': 7.8166, 'eval_samples_per_second': 109.511, 'eval_steps_per_second': 13.689, 'epoch': 1.0}
+{'loss': 0.443, 'grad_norm': 0.5345267057418823, 'learning_rate': 0.00033364485981308414, 'epoch': 1.17}
+{'eval_loss': 0.33244359493255615, 'eval_spearman_rho': 0.41446749352411366, 'eval_mse': 0.33244359493255615, 'eval_runtime': 7.8364, 'eval_samples_per_second': 109.234, 'eval_steps_per_second': 13.654, 'epoch': 2.0}
+{'loss': 0.3719, 'grad_norm': 1.5757524967193604, 'learning_rate': 0.000267022696929239, 'epoch': 2.34}
+{'eval_loss': 0.27421048283576965, 'eval_spearman_rho': 0.4328052808197853, 'eval_mse': 0.27421048283576965, 'eval_runtime': 7.8324, 'eval_samples_per_second': 109.29, 'eval_steps_per_second': 13.661, 'epoch': 3.0}
+{'loss': 0.2941, 'grad_norm': 7.5514678955078125, 'learning_rate': 0.00020026702269692926, 'epoch': 3.5}
+{'eval_loss': 0.27345800399780273, 'eval_spearman_rho': 0.47856902733099416, 'eval_mse': 0.27345800399780273, 'eval_runtime': 7.8339, 'eval_samples_per_second': 109.269, 'eval_steps_per_second': 13.659, 'epoch': 4.0}
+{'loss': 0.2542, 'grad_norm': 2.3161890506744385, 'learning_rate': 0.0001335113484646195, 'epoch': 4.67}
+{'eval_loss': 0.21218989789485931, 'eval_spearman_rho': 0.49397467824287217, 'eval_mse': 0.21218989789485931, 'eval_runtime': 7.822, 'eval_samples_per_second': 109.434, 'eval_steps_per_second': 13.679, 'epoch': 5.0}
+{'loss': 0.2182, 'grad_norm': 4.333643436431885, 'learning_rate': 6.675567423230975e-05, 'epoch': 5.84}
+{'eval_loss': 0.20724830031394958, 'eval_spearman_rho': 0.5024440659356056, 'eval_mse': 0.20724830031394958, 'eval_runtime': 7.8236, 'eval_samples_per_second': 109.413, 'eval_steps_per_second': 13.677, 'epoch': 6.0}
+{'eval_loss': 0.20026232302188873, 'eval_spearman_rho': 0.5078192442984398, 'eval_mse': 0.20026233792304993, 'eval_runtime': 7.8251, 'eval_samples_per_second': 109.392, 'eval_steps_per_second': 13.674, 'epoch': 7.0}
+{'train_runtime': 619.3025, 'train_samples_per_second': 38.668, 'train_steps_per_second': 4.838, 'train_loss': 0.2943012176432183, 'epoch': 7.0}
+Evaluating on Test Set...
+
+--- FINAL RESULTS ---
+Spearman Rho: 0.5078
+MSE Loss: 0.2003
+---------------------

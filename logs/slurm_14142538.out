@@ -1,0 +1,78 @@
+Job running on node: cn008
+Job partition: nvidia
+Wed Feb 18 13:01:32 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 580.105.08             Driver Version: 580.105.08     CUDA Version: 13.0     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-PCIE-40GB          Off |   00000000:81:00.0 Off |                    0 |
+| N/A   29C    P0             38W /  250W |       0MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+--- Running LoRA Experiment ---
+Job running on node: cn008
+Job partition: nvidia
+Wed Feb 18 13:01:33 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 580.105.08             Driver Version: 580.105.08     CUDA Version: 13.0     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-PCIE-40GB          Off |   00000000:81:00.0 Off |                    0 |
+| N/A   31C    P0             92W /  250W |       0MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+--- Running LoRA Experiment ---
+--- STARTING LoRA EXPERIMENT: facebook/esm2_t33_650M_UR50D on RNC_ECOLI ---
+Loading data from RNC_ECOLI_Weeks_2023.csv...
+Data loaded Successfully.
+Training on 3421 sequences.
+
+--- LoRA TRAINABLE PARAMETERS ---
+trainable params: 7,723,521 || all params: 658,765,463 || trainable%: 1.1724
+---------------------------------
+
+Starting LoRA Training...
+{'eval_loss': 0.4163338541984558, 'eval_spearman_rho': 0.18908289445250662, 'eval_mse': 0.4163338243961334, 'eval_runtime': 12.5962, 'eval_samples_per_second': 67.957, 'eval_steps_per_second': 8.495, 'epoch': 1.0}
+{'eval_loss': 0.3735997676849365, 'eval_spearman_rho': 0.07675333829780809, 'eval_mse': 0.3735997676849365, 'eval_runtime': 12.5869, 'eval_samples_per_second': 68.007, 'eval_steps_per_second': 8.501, 'epoch': 2.0}
+{'loss': 0.4228, 'grad_norm': 1.334662675857544, 'learning_rate': 0.0003836448598130841, 'epoch': 2.34}
+{'eval_loss': 0.3860315978527069, 'eval_spearman_rho': nan, 'eval_mse': 0.3860315978527069, 'eval_runtime': 12.6003, 'eval_samples_per_second': 67.935, 'eval_steps_per_second': 8.492, 'epoch': 3.0}
+{'eval_loss': 0.37122800946235657, 'eval_spearman_rho': 0.042190559309645166, 'eval_mse': 0.37122803926467896, 'eval_runtime': 12.598, 'eval_samples_per_second': 67.947, 'eval_steps_per_second': 8.493, 'epoch': 4.0}
+{'loss': 0.4061, 'grad_norm': 1.657954454421997, 'learning_rate': 0.00026682242990654206, 'epoch': 4.67}
+{'eval_loss': 0.3712165355682373, 'eval_spearman_rho': nan, 'eval_mse': 0.3712165653705597, 'eval_runtime': 12.5907, 'eval_samples_per_second': 67.987, 'eval_steps_per_second': 8.498, 'epoch': 5.0}
+{'eval_loss': 0.3722819685935974, 'eval_spearman_rho': 0.008641710362690964, 'eval_mse': 0.3722819983959198, 'eval_runtime': 12.5921, 'eval_samples_per_second': 67.979, 'eval_steps_per_second': 8.497, 'epoch': 6.0}
+{'eval_loss': 0.37170103192329407, 'eval_spearman_rho': 0.06188569887678879, 'eval_mse': 0.37170103192329407, 'eval_runtime': 12.5777, 'eval_samples_per_second': 68.057, 'eval_steps_per_second': 8.507, 'epoch': 7.0}
+{'loss': 0.3993, 'grad_norm': 2.321348190307617, 'learning_rate': 0.00015, 'epoch': 7.01}
+{'eval_loss': 0.37063202261924744, 'eval_spearman_rho': 0.06188569887678879, 'eval_mse': 0.37063199281692505, 'eval_runtime': 12.5839, 'eval_samples_per_second': 68.024, 'eval_steps_per_second': 8.503, 'epoch': 8.0}
+{'eval_loss': 0.3709033131599426, 'eval_spearman_rho': 0.0342597757883734, 'eval_mse': 0.3709033131599426, 'eval_runtime': 12.5864, 'eval_samples_per_second': 68.01, 'eval_steps_per_second': 8.501, 'epoch': 9.0}
+{'loss': 0.3971, 'grad_norm': 3.2613322734832764, 'learning_rate': 3.3177570093457946e-05, 'epoch': 9.35}
+{'eval_loss': 0.3708149492740631, 'eval_spearman_rho': 0.0658315804157567, 'eval_mse': 0.3708149492740631, 'eval_runtime': 12.5914, 'eval_samples_per_second': 67.983, 'eval_steps_per_second': 8.498, 'epoch': 10.0}
+{'train_runtime': 1480.2591, 'train_samples_per_second': 23.111, 'train_steps_per_second': 1.446, 'train_loss': 0.4064312462494752, 'epoch': 10.0}
+Evaluating on Test Set...
+
+--- FINAL LoRA RESULTS ---
+Model: facebook/esm2_t33_650M_UR50D
+Spearman Rho: 0.1891
+MSE Loss: 0.4163
+------------------------------

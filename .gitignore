@@ -8,4 +8,3 @@ lora_results_rnc_optimized/
 # (optional but recommended)
 __pycache__/
 *.pyc
-logs/

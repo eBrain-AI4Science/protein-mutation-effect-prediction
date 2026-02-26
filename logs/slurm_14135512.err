@@ -1,0 +1,36 @@
+Unloading module 'python/3.9.0'
+Unloading module 'cuda/11.8.0'
+Unloading module 'gcc/9.2.0'
+Loading module 'cuda/11.8.0'
+Loading module 'gcc/9.2.0'
+
+Loading [1mcuda/11.8.0[22m
+  [94mLoading requirement[0m: gcc/9.2.0
+Traceback (most recent call last):
+  File "/scratch/ss17886/baseline/baseline_gfp.py", line 20, in <module>
+    df = pd.read_json(DATA_URL, lines=True)
+  File "/home/ss17886/.conda/envs/esm_repro/lib/python3.9/site-packages/pandas/io/json/_json.py", line 791, in read_json
+    json_reader = JsonReader(
+  File "/home/ss17886/.conda/envs/esm_repro/lib/python3.9/site-packages/pandas/io/json/_json.py", line 904, in __init__
+    data = self._get_data_from_filepath(filepath_or_buffer)
+  File "/home/ss17886/.conda/envs/esm_repro/lib/python3.9/site-packages/pandas/io/json/_json.py", line 944, in _get_data_from_filepath
+    self.handles = get_handle(
+  File "/home/ss17886/.conda/envs/esm_repro/lib/python3.9/site-packages/pandas/io/common.py", line 728, in get_handle
+    ioargs = _get_filepath_or_buffer(
+  File "/home/ss17886/.conda/envs/esm_repro/lib/python3.9/site-packages/pandas/io/common.py", line 384, in _get_filepath_or_buffer
+    with urlopen(req_info) as req:
+  File "/home/ss17886/.conda/envs/esm_repro/lib/python3.9/site-packages/pandas/io/common.py", line 289, in urlopen
+    return urllib.request.urlopen(*args, **kwargs)
+  File "/home/ss17886/.conda/envs/esm_repro/lib/python3.9/urllib/request.py", line 214, in urlopen
+    return opener.open(url, data, timeout)
+  File "/home/ss17886/.conda/envs/esm_repro/lib/python3.9/urllib/request.py", line 523, in open
+    response = meth(req, response)
+  File "/home/ss17886/.conda/envs/esm_repro/lib/python3.9/urllib/request.py", line 632, in http_response
+    response = self.parent.error(
+  File "/home/ss17886/.conda/envs/esm_repro/lib/python3.9/urllib/request.py", line 561, in error
+    return self._call_chain(*args)
+  File "/home/ss17886/.conda/envs/esm_repro/lib/python3.9/urllib/request.py", line 494, in _call_chain
+    result = func(*args)
+  File "/home/ss17886/.conda/envs/esm_repro/lib/python3.9/urllib/request.py", line 641, in http_error_default
+    raise HTTPError(req.full_url, code, msg, hdrs, fp)
+urllib.error.HTTPError: HTTP Error 404: Not Found
