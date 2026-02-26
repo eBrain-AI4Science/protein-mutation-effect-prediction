@@ -1,0 +1,11 @@
+# Experiment / result folders
+baseline_results_full/
+baseline_results_lora/
+lora_results_optimized/
+lora_results_rnc/
+lora_results_rnc_optimized/
+
+# (optional but recommended)
+__pycache__/
+*.pyc
+logs/

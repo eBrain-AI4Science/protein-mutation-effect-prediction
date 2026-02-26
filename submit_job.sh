@@ -1,0 +1,67 @@
+#!/bin/bash
+#SBATCH --job-name=esm_repro
+#SBATCH --output=logs/slurm_%j.out
+#SBATCH --error=logs/slurm_%j.err
+#SBATCH --partition=nvidia       # <--- CHANGED: "gpu" -> "nvidia"
+#SBATCH --gres=gpu:a100:1        # Request exactly 1 A100 GPU
+#SBATCH --nodes=1
+#SBATCH --ntasks=1               # Default is 1, but good to be explicit
+#SBATCH --cpus-per-task=4        # 4 CPUs for data loading
+#SBATCH --mem=32G
+#SBATCH --time=04:00:00          # 4 hours (Max is 4 days on nvidia partition)
+
+# 1. Load Modules
+module purge
+module load cuda/11.8.0
+
+# 2. Load Miniconda
+source /share/apps/NYUAD5/miniconda/3-4.11.0/bin/activate
+# Activate new environment
+conda activate esm_repro
+# -- End of Environment Setup ---
+
+# 3. Debugging Info - print GPU details
+echo "Job running on node: $(hostname)"
+echo "Job partition: $SLURM_JOB_PARTITION"
+nvidia-smi                       # Verify GPU is visible
+
+# 4. Run Experiment 1: Full Fine-Tuning
+# echo "--- Running Baseline Experiment ---"
+# python baseline.py
+
+# 5. Run Experiment 2: Lora
+echo "--- Running LoRA Experiment ---"
+python baseline_lora.py#!/bin/bash
+#SBATCH --job-name=esm_repro
+#SBATCH --output=logs/slurm_%j.out
+#SBATCH --error=logs/slurm_%j.err
+#SBATCH --partition=nvidia       # <--- CHANGED: "gpu" -> "nvidia"
+#SBATCH --gres=gpu:a100:1        # Request exactly 1 A100 GPU
+#SBATCH --nodes=1
+#SBATCH --ntasks=1               # Default is 1, but good to be explicit
+#SBATCH --cpus-per-task=4        # 4 CPUs for data loading
+#SBATCH --mem=32G
+#SBATCH --time=04:00:00          # 4 hours (Max is 4 days on nvidia partition)
+
+# 1. Load Modules
+module purge
+module load cuda/11.8.0
+
+# 2. Load Miniconda
+source /share/apps/NYUAD5/miniconda/3-4.11.0/bin/activate
+# Activate new environment
+conda activate esm_repro
+# -- End of Environment Setup ---
+
+# 3. Debugging Info - print GPU details
+echo "Job running on node: $(hostname)"
+echo "Job partition: $SLURM_JOB_PARTITION"
+nvidia-smi                       # Verify GPU is visible
+
+# 4. Run Experiment 1: Full Fine-Tuning
+echo "--- Running Baseline Experiment ---"
+python baseline_full.py
+
+# 5. Run Experiment 2: Lora
+echo "--- Running LoRA Experiment ---"
+# python baseline_lora4.py
